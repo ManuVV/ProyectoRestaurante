@@ -1,0 +1,42 @@
+<div class="container py-4 mt-navbar">
+  <h2 class="mb-4 text-center">Gestión de Reservas</h2>
+
+  <!-- Si hay reservas, muestra la tabla -->
+  <table class="table table-hover table-bordered" *ngIf="reservas.length > 0; else sinReservas">
+    <thead class="table-success text-center">
+      <tr>
+        <th>Nombre Reserva</th>
+        <th>Cliente</th>
+        <th>Email</th>
+        <th>Fecha</th>
+        <th>Hora</th>
+        <th>Nº Personas</th>
+        <th>Mesa</th>
+        <th style="width: 140px;" class="text-center">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let reserva of reservas">
+        <td class="text-center">{{ reserva.nombre }}</td>
+        <td class="text-center">{{ reserva.nombreUsuario }}</td>
+        <td class="text-center">{{ reserva.emailUsuario }}</td>
+        <td class="text-center">{{ reserva.fecha }}</td>
+        <td class="text-center">{{ formatearHora(reserva.hora) }}</td>
+        <td class="text-center">{{ reserva.numeroPersonas }}</td>
+        <td class="text-center">{{ reserva.nombreMesa }}</td>
+        <td class="text-center">
+          <button class="btn btn-danger btn-sm" (click)="confirmarEliminar(reserva.id)">
+            <i class="fas fa-trash-alt"></i> Eliminar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Plantilla alternativa cuando no hay reservas -->
+  <ng-template #sinReservas>
+    <div class="alert alert-info text-center" role="alert">
+      No hay reservas registradas.
+    </div>
+  </ng-template>
+</div>

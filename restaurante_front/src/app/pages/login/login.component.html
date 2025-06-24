@@ -1,0 +1,53 @@
+<div class="container py-5 mt-navbar">
+  <h2 class="mb-4 text-center">Iniciar Sesión</h2>
+
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <form (ngSubmit)="login()" #formLogin="ngForm">
+
+        <!-- Email con icono -->
+        <div class="mb-3 text-center">
+          <label for="email" class="form-label">Correo electrónico</label>
+          <div class="input-group mx-auto" style="max-width: 400px;">
+            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+            <input type="email" id="email" [(ngModel)]="email" name="email"
+                   class="form-control" required>
+          </div>
+
+        </div>
+
+        <!-- Contraseña con icono -->
+        <div class="mb-3 text-center">
+          <label for="password" class="form-label">Contraseña</label>
+          <div class="input-group mx-auto" style="max-width: 400px;">
+            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+            <input type="password" id="password" [(ngModel)]="password" name="password"
+                   class="form-control" required>
+          </div>
+        </div>
+
+        <!-- Botón más estrecho -->
+        <div class="text-center">
+          <button type="submit"
+                  class="btn btn-primary mt-2"
+                  style="width: 150px;"
+                  [disabled]="formLogin.invalid || cargando">
+            {{ cargando ? 'Cargando...' : 'Entrar' }}
+          </button>
+        </div>
+
+        <!-- Error -->
+        <div *ngIf="error" class="alert alert-danger mt-3 text-center">
+          {{ error }}
+        </div>
+
+      </form>
+
+      <!-- Enlace registro -->
+      <div class="text-center mt-3">
+        <span>¿No tienes cuenta?</span>
+        <a routerLink="/registrarse" class="text-decoration-none fw-bold ms-1">Regístrate aquí</a>
+      </div>
+    </div>
+  </div>
+</div>

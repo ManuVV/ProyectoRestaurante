@@ -1,0 +1,55 @@
+<div class="container py-5 mt-navbar">
+  <h2 class="mb-4 text-center">Crear una cuenta</h2>
+
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <form (ngSubmit)="registrarse()" #formRegistro="ngForm">
+
+        <!-- Nombre -->
+        <div class="mb-3 text-center">
+          <label for="nombre" class="form-label">Nombre</label>
+          <input type="text" id="nombre" [(ngModel)]="nombre" name="nombre"
+                 class="form-control mx-auto" style="max-width: 400px;" required>
+        </div>
+
+        <!-- Apellidos -->
+        <div class="mb-3 text-center">
+          <label for="apellidos" class="form-label">Apellidos</label>
+          <input type="text" id="apellidos" [(ngModel)]="apellidos" name="apellidos"
+                 class="form-control mx-auto" style="max-width: 400px;" required>
+        </div>
+
+        <!-- Email -->
+        <div class="mb-3 text-center">
+          <label for="email" class="form-label">Correo electrónico</label>
+          <input type="email" id="email" [(ngModel)]="email" name="email"
+                 class="form-control mx-auto" style="max-width: 400px;" required>
+        </div>
+
+        <!-- Contraseña -->
+        <div class="mb-3 text-center">
+          <label for="password" class="form-label">Contraseña</label>
+          <input type="password" id="password" [(ngModel)]="password" name="password"
+                 class="form-control mx-auto" style="max-width: 400px;" required>
+        </div>
+
+        <!-- Botón centrado y más estrecho -->
+        <div class="text-center">
+          <button type="submit"
+                  class="btn btn-success mt-2"
+                  style="width: 150px;"
+                  [disabled]="formRegistro.invalid">
+            Registrarse
+          </button>
+        </div>
+
+      </form>
+
+      <!-- Enlace login -->
+      <div class="text-center mt-3">
+        <span>¿Ya tienes cuenta?</span>
+        <a routerLink="/login" class="text-decoration-none fw-bold ms-1">Inicia sesión aquí</a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,94 @@
+<!-- <div class="d-flex flex-column min-vh-100"> -->
+
+  <!-- Navbar Admin -->
+  <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold" routerLink="/admin">Admin La Comarca</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#adminNavbar"
+              aria-controls="adminNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="adminNavbar">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="usuarios" routerLinkActive="active">Usuarios</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="platos" routerLinkActive="active" >Platos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="reservas" routerLinkActive="active">Reservas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="mesas" routerLinkActive="active">Mesas</a>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <button (click)="cerrarSesion()" class="btn btn-outline-light btn-sm">
+              <i class="fas fa-sign-out-alt me-2"></i> Cerrar sesión
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav> -->
+
+  <!-- Contenido dinámico -->
+  <!-- <div class="flex-grow-1 p-4" style="padding-top: 80px;">
+    <router-outlet></router-outlet>
+  </div>
+
+</div> -->
+
+<div class="d-flex flex-column min-vh-100">
+
+
+  <nav class="navbar navbar-expand-lg shadow-sm"
+       [ngClass]="{ 'fixed-top': true }">
+    <div class="container">
+      <a class="navbar-brand fw-bold d-flex align-items-center gap-2" routerLink="/admin">
+        <img src="logo.png" alt="Logo" height="50" />
+        Panel de Administracion de La Comarca
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#adminNavbar"
+              aria-controls="adminNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="adminNavbar">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a routerLink="usuarios" class="nav-link" routerLinkActive="active" (click)="closeNavbar()">Usuarios</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="platos" class="nav-link" routerLinkActive="active" (click)="closeNavbar()">Platos</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="reservas" class="nav-link" routerLinkActive="active" (click)="closeNavbar()">Reservas</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="mesas" class="nav-link" routerLinkActive="active" (click)="closeNavbar()">Mesas</a>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav ms-3">
+          <li class="nav-item">
+            <button (click)="cerrarSesion()" class="btn btn-outline-light btn-sm">
+              <i class="fas fa-sign-out-alt me-2"></i> Cerrar sesión
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Contenido dinámico -->
+  <main class="flex-grow-1 p-4" style="padding-top: 90px;">
+    <router-outlet></router-outlet>
+  </main>
+
+</div>
+

@@ -1,0 +1,36 @@
+<div class="container py-5 mt-navbar">
+  <h2 class="mb-4 text-center">Mis Reservas</h2>
+
+  <div *ngIf="cargando" class="text-center">
+    <div class="spinner-border" role="status"></div>
+  </div>
+
+  <div *ngIf="error" class="alert alert-danger text-center">
+    Error al cargar tus reservas.
+  </div>
+
+  <div *ngIf="!cargando && reservas.length === 0" class="alert alert-info text-center">
+    No tienes reservas realizadas aún.
+  </div>
+
+  <div class="row" *ngIf="!cargando && reservas.length > 0">
+    <div class="col-md-6 mb-4" *ngFor="let reserva of reservas">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Nombre de la reserva: {{ reserva.nombre }}</h5>
+          <p class="card-text"><strong>Numero de Personas:</strong> {{ reserva.numeroPersonas}} persona/s</p>
+          <p class="card-text"><strong>Fecha:</strong> {{ reserva.fecha | date:'dd/MM/yyyy' }}</p>
+          <p class="card-text"><strong>Hora:</strong> {{ reserva.hora | date:'HH:mm' }}</p>
+          <p class="card-text"><strong>Mesa:</strong> {{ reserva.nombreMesa }}</p>
+
+          <div class="d-flex justify-content-end mt-3">
+            <button class="btn btn-danger btn-sm" (click)="cancelarReserva(reserva.id)">
+              Cancelar reserva
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

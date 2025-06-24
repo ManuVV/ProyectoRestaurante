@@ -1,0 +1,41 @@
+<!-- <div class="hero position-relative text-white d-flex align-items-center justify-content-center" style="height: 85vh; background-image: url('/assets/images/hero-restaurante.jpg'); background-size: cover; background-position: center;"> -->
+
+  <!-- Capa oscura encima del fondo -->
+  <!-- <div class="overlay position-absolute top-0 start-0 w-100 h-100" style="background-color: rgba(0, 0, 0, 0.5);"></div> -->
+
+  <!-- Contenido -->
+  <!-- <div class="container position-relative text-center">
+    <h1 class="display-4 fw-bold">Bienvenido a Nuestro Restaurante</h1>
+    <p class="lead">Cocina con sabor auténtico. ¡Haz tu reserva ahora!</p>
+    <a routerLink="/reservas" class="btn btn-primary btn-lg mt-4">Reservar mesa</a>
+    <p class="lead mt-5">Descubre nuestra carta</p>
+    <a routerLink="/carta" class="btn btn-primary btn-lg mt-2">Ver Carta</a>
+  </div>
+
+
+
+</div> -->
+
+
+<div class="hero position-relative text-white d-flex align-items-center justify-content-center"
+     [ngStyle]="{ 'background-image': 'url(' + imagenActual + ')' }"
+     style="height: 85vh; background-size: cover; background-position: center; transition: background-image 1s ease-in-out;">
+
+  <!-- Capa oscura encima del fondo -->
+  <div class="overlay position-absolute top-0 start-0 w-100 h-100" style="background-color: rgba(0, 0, 0, 0.5);"></div>
+
+  <!-- Contenido del hero -->
+  <div class="container position-relative text-center">
+    <h1 class="display-4 fw-bold fade-in">Bienvenido a La Comarca</h1>
+    <p class="lead text-white fade-in delay-1 mt-3 mx-auto" style="max-width: 600px;">
+      En La Comarca fusionamos tradición y creatividad para ofrecer una experiencia culinaria inolvidable.
+    </p>
+    <p class="lead fade-in delay-1">Cocina con sabor auténtico. ¡Haz tu reserva ahora!</p>
+    <a routerLink="/reservas" class="btn btn-primary btn-lg mt-4 fade-in delay-2">Reservar mesa</a>
+    <p class="lead mt-5 fade-in delay-3">Descubre nuestra carta</p>
+    <a routerLink="/carta" class="btn btn-primary btn-lg mt-2 fade-in delay-4">Ver Carta</a>
+  </div>
+</div>
+
+<app-opinion-carrusel></app-opinion-carrusel>
+

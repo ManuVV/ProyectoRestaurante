@@ -1,0 +1,59 @@
+<!-- <div class="container py-5 mt-navbar" >
+  <h2 class="mb-4 text-center">Nuestra Carta</h2>
+
+  <div *ngFor="let categoria of categoriasOrdenadas">
+    <h3 class="mt-5 mb-4 text-center" style="color: #8B4513; text-decoration: underline;">
+      {{ categoria.nombre }}
+    </h3>
+    <div class="row">
+      <div class="col-md-3 col-sm-6 mb-4" *ngFor="let plato of categoria.platos">
+        <div class="card h-100 shadow-sm">
+          <img [src]="plato.imagen" class="card-img-top img-fluid" [alt]="plato.nombre">
+          <div class="card-body">
+            <h5 class="card-title">{{ plato.nombre }}</h5>
+            <p class="card-text text-muted">{{ plato.descripcion }}</p>
+            <p class="fw-bold text-end">{{ plato.precio | currency:'EUR' }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="container py-5 mt-navbar">
+  <h2 class="mb-4 text-center">Nuestra Carta</h2>
+
+  <!-- Filtro de categoría -->
+  <div class="mb-4 text-center">
+    <label for="filtroCategoria" class="form-label me-2">Filtrar por categoría:</label>
+    <select id="filtroCategoria"
+            class="form-select w-auto d-inline-block"
+            [(ngModel)]="categoriaSeleccionada">
+      <option [ngValue]="null">Todas</option>
+      <option *ngFor="let cat of categoriasOrdenadas" [ngValue]="cat.nombre">
+        {{ cat.nombre }}
+      </option>
+    </select>
+  </div>
+
+  <!-- Listado de platos por categoría -->
+  <div *ngFor="let categoria of categoriasOrdenadas">
+    <ng-container *ngIf="!categoriaSeleccionada || categoria.nombre === categoriaSeleccionada">
+      <h3 class="mt-5 mb-4 text-center" style="color: #8B4513; text-decoration: underline;">
+        {{ categoria.nombre }}
+      </h3>
+      <div class="row">
+        <div class="col-md-3 col-sm-6 mb-4" *ngFor="let plato of categoria.platos">
+          <div class="card h-100 shadow-sm">
+            <img [src]="plato.imagen" class="card-img-top img-fluid" [alt]="plato.nombre">
+            <div class="card-body">
+              <h5 class="card-title">{{ plato.nombre }}</h5>
+              <p class="card-text text-muted">{{ plato.descripcion }}</p>
+              <p class="fw-bold text-end">{{ plato.precio | currency:'EUR' }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

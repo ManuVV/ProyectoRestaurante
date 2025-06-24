@@ -1,0 +1,39 @@
+<div class="container mt-navbar">
+  <h2 class="mb-4 text-center ">Gestión de Usuarios</h2>
+
+  <table class="table table-hover table-bordered">
+    <thead class="table-success">
+      <tr class="text-center">
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Rol</th>
+        <th>Activo</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr class="text-center" *ngFor="let usuario of usuarios">
+        <td>{{ usuario.nombre }} {{usuario.apellidos}}</td>
+        <td>{{ usuario.email }}</td>
+        <td>{{ usuario.rol }}</td>
+        <td>
+          <span *ngIf="usuario.activo" class="badge bg-success">Sí</span>
+          <span *ngIf="!usuario.activo" class="badge bg-danger">No</span>
+        </td>
+        <td class="text-center">
+          <button class="btn btn-warning btn-sm me-2" (click)="cambiarEstadoUsuario(usuario.id)">
+            <i class="fas" [ngClass]="usuario.activo ? 'fa-user-slash' : 'fa-user-check'"></i>
+            {{ usuario.activo ? 'Desactivar' : 'Activar' }}
+          </button>
+
+          <button class="btn btn-danger btn-sm" (click)="confirmarEliminarUsuario(usuario.id)">
+            <i class="fas fa-trash-alt"></i> Eliminar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+

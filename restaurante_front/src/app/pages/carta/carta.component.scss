@@ -1,0 +1,21 @@
+.card-img-top {
+  object-fit: cover;
+  height: 250px;
+}
+
+
+.card {
+  height: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  transition: box-shadow 0.3s ease, transform 0.3s ease; // transición de sombra y movimiento
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); // sombra más marcada
+  transform: translateY(-5px); // levanta la tarjeta 5px hacia arriba
+}
+
+.mt-navbar {
+  margin-top: 120px; // ajusta según la altura real de tu navbar
+}

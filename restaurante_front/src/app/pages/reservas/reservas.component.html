@@ -1,0 +1,72 @@
+<div class="container py-5 mt-navbar" >
+  <h2 class="mb-4 text-center">Reservar una mesa</h2>
+
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <form (ngSubmit)="crearReserva()" #formReserva="ngForm">
+
+        <div class="mb-3">
+          <label for="nombre" class="form-label">Nombre para la reserva</label>
+          <input type="text" id="nombre" [(ngModel)]="nombre" name="nombre" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="fecha" class="form-label">Fecha</label>
+          <input type="date" id="fecha" [(ngModel)]="fecha" (change)="cargarHorariosDisponibles()" name="fecha"
+            class="form-control" required [min]="minFecha">
+        </div>
+
+          <div class="mb-3">
+            <label for="idMesa" class="form-label">Selecciona mesa</label>
+            <select [(ngModel)]="idMesaSeleccionada" name="idMesaSeleccionada" class="form-control" required
+              (change)="cargarHorariosDisponibles()">
+              <option *ngFor="let mesa of mesasActivas" [value]="mesa.id">
+                {{ mesa.nombre }}
+              </option>
+            </select>
+          </div>
+
+        <!-- Mostrar horarios solo si hay fecha seleccionada -->
+        <div *ngIf="fecha" class="mb-3">
+          <label for="hora" class="form-label">Hora disponible</label>
+
+          <div *ngIf="cargandoHorarios" class="d-flex justify-content-center">
+            <div class="spinner-border" role="status" aria-hidden="true"></div>
+          </div>
+
+          <div *ngIf="!cargandoHorarios">
+            <ng-container *ngIf="horariosDisponibles.length > 0; else noHorarios">
+              <select id="hora" [(ngModel)]="horaSeleccionada" name="horaSeleccionada" class="form-control" required>
+                <option *ngFor="let hora of horariosDisponibles" [value]="hora">{{ hora }}</option>
+              </select>
+            </ng-container>
+
+            <ng-template #noHorarios>
+              <div class="alert alert-warning mt-2" role="alert">
+                No hay horarios disponibles para la fecha seleccionada.
+              </div>
+            </ng-template>
+          </div>
+        </div>
+
+
+
+        <div class="mb-3">
+          <label for="numeroPersonas" class="form-label">Número de personas</label>
+          <input type="number" id="numeroPersonas" [(ngModel)]="numeroPersonas" name="numeroPersonas"
+            class="form-control" min="1" max="8" required>
+        </div>
+
+        <div class="d-grid">
+          <button type="submit" class="btn btn-success d-flex justify-content-center align-items-center"
+            [disabled]="formReserva.invalid || cargandoReserva || !horaSeleccionada || horariosDisponibles.length === 0">
+
+            <span *ngIf="cargandoReserva" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+            {{ cargandoReserva ? 'Reservando...' : 'Reservar' }}
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

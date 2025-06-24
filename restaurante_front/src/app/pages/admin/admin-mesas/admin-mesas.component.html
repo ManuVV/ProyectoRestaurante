@@ -1,0 +1,37 @@
+<div class="container py-4 mt-navbar">
+  <div class="text-center mb-4">
+    <h2 class="mb-3">Gestión de Mesas</h2>
+    <button class="btn btn-success" (click)="abrirModalCrear()">
+      <i class="fas fa-plus"></i> Añadir Mesa
+    </button>
+  </div>
+
+  <table class="table table-hover table-bordered">
+    <thead class="table-success">
+      <tr>
+
+        <th class="text-center">Nombre</th>
+        <th class="text-center">Estado</th>
+        <th class="text-center" style="width: 300px;">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let mesa of mesas">
+        <td class="text-center">{{ mesa.nombre }}</td>
+        <td class="text-center">
+          <span *ngIf="mesa.activa" class="badge bg-success">Activa</span>
+          <span *ngIf="!mesa.activa" class="badge bg-secondary">Inactiva</span>
+        </td>
+        <td class="text-center">
+          <button class="btn btn-warning btn-sm me-2" (click)="cambiarEstado(mesa)">
+            <i class="fas" [ngClass]="mesa.activa ? 'fa-eye-slash' : 'fa-eye'"></i>
+            {{ mesa.activa ? 'Desactivar' : 'Activar' }}
+          </button>
+          <button class="btn btn-danger btn-sm" (click)="confirmarEliminar(mesa.id)">
+            <i class="fas fa-trash-alt"></i> Eliminar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,48 @@
+<div class="container">
+
+
+  <div class="text-center mb-4 mt-navbar">
+    <h2 class="mb-3">Gestión de Platos</h2>
+    <button class="btn btn-success" (click)="abrirModalCrear()">
+      <i class="fas fa-plus"></i> Añadir Plato
+    </button>
+  </div>
+
+  <table class="table table-hover table-bordered">
+    <thead class="table-success">
+      <tr class="text-center">
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Precio</th>
+        <th>Categoría</th>
+        <th>En Carta</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="text-center" *ngFor="let plato of platos">
+        <td>{{ plato.nombre }}</td>
+        <td>{{ plato.descripcion }}</td>
+        <td>{{ plato.precio | currency: 'EUR' }}</td>
+        <td>{{ plato.nombreCategoria }}</td>
+        <td>
+          <span *ngIf="plato.disponibleEnCarta" class="badge bg-success">Sí</span>
+          <span *ngIf="!plato.disponibleEnCarta" class="badge bg-danger">No</span>
+        </td>
+        <td class="text-center">
+          <button class="btn btn-primary btn-sm me-2" (click)="abrirModalEditar(plato)">
+            <i class="fas fa-edit"></i> Editar
+          </button>
+          <button class="btn btn-warning btn-sm" (click)="cambiarEstadoPlato(plato.id)">
+            <i class="fas" [ngClass]="plato.disponibleEnCarta ? 'fa-eye-slash' : 'fa-eye'"></i>
+            {{ plato.disponibleEnCarta ? 'Ocultar' : 'Mostrar' }}
+          </button>
+
+          <button class="btn btn-danger btn-sm" (click)="confirmarEliminarPlato(plato.id)">
+            <i class="fas fa-trash-alt"></i> Eliminar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

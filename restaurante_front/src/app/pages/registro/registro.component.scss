@@ -1,0 +1,12 @@
+a {
+  color: #c21807; // color vino elegante
+
+  &:hover {
+    color: #a81506;
+    text-decoration: underline;
+  }
+}
+
+.mt-navbar {
+  margin-top: 120px; // ajusta según la altura real de tu navbar
+}

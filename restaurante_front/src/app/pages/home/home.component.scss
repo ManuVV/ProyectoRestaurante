@@ -1,0 +1,72 @@
+
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 85vh;
+  color: white;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+
+  padding-top: 100px; // 💡 Ajusta según la altura real del navbar
+
+  .container {
+    z-index: 2;
+    position: relative;
+  }
+
+  @media (max-width: 768px) {
+    padding-top: 120px; // un poco más en móvil si la navbar crece al abrirse
+  }
+}
+
+  // &::before {
+  //   content: "";
+  //   background: rgba(0, 0, 0, 0.4); // oscurecer imagen para resaltar texto
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   height: 100%;
+  //   width: 100%;
+  //   z-index: 1;
+  // }
+
+  h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  p.lead {
+    font-size: 1.25rem;
+    font-weight: 300;
+  }
+
+  a.btn-primary {
+    font-size: 1.2rem;
+    padding: 0.75rem 2rem;
+    border-radius: 50px;
+    background-color: rgb(0, 85, 62); // rojo vino
+    border: none;
+
+    &:hover {
+      background-color: rgb(0, 51, 37)
+    }
+  }
+
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+.delay-1 { animation-delay: 0.4s; }
+.delay-2 { animation-delay: 0.8s; }
+.delay-3 { animation-delay: 1.2s; }
+.delay-4 { animation-delay: 1.6s; }
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
